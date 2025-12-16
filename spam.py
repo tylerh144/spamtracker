@@ -23,8 +23,12 @@ print(emails)
 
 emailData = []
 
+#collect data
 for file in emails:
     eml = open(path + "\\Emails\\" + file)
+
+    aggregate = eml.read()
+    eml.seek(0)
 
     curLine = eml.readline()
 
@@ -37,7 +41,6 @@ for file in emails:
     eml.seek(0)
 
 
-
     while curLine.split(":")[0] != "From":
         curLine = eml.readline()
 
@@ -46,8 +49,11 @@ for file in emails:
 
     sender = curLine[idx+1:len(curLine)-2]
 
+    
+    num = aggregate.index("Content-Type")
+    print(num)
 
-    #collect data
+    #put data in object
     emailData.append(EmailData(name, sender, date, "test"))
 
     eml.close()
