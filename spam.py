@@ -11,7 +11,7 @@ class EmailData:
         self.rep = 0
 
     def __str__(self):
-        return f"{self.sender_name}\n{self.sender_email}\n{self.date}\n{self.subject}\n{self.body}\n\n"
+        return f"Sender: {self.sender_name}\nEmail: {self.sender_email}\nDate: {self.date}\nSubject: {self.subject}\n{self.body}\n\n"
     
 
 
@@ -19,14 +19,14 @@ path = os.path.dirname(os.path.abspath(__file__))
 print(path)
 
 
-emails = os.listdir(path + "\\Emails\\")
+emails = os.listdir(path + "\\Emails1\\")
 print(emails)
 
 emailData = []
 
 #collect data
 for file in emails:
-    eml = open(path + "\\Emails\\" + file)
+    eml = open(path + "\\Emails1\\" + file)
 
     aggregate = eml.read()
     eml.seek(0)
@@ -59,6 +59,7 @@ for file in emails:
     name = curLine[6:idx-1]
 
     sender = curLine[idx+1:len(curLine)-2]
+    
 
     #inconsistent position again
     eml.seek(0)
@@ -76,13 +77,19 @@ for file in emails:
             curLine = eml.readline()
             boundary = curLine[curLine.index("=")+2:len(curLine)-2]
         
-        print(eml.readline())
-        eml.readline()
+        #skip past some stuff (skip to open boundary, skip to new line/contents)
+        curLine = eml.readline()
         while boundary not in curLine:
             curLine = eml.readline()
-            print(curLine)
+        while curLine != "\n":
+            curLine = eml.readline()
+
+        curLine = eml.readline()
+
+        while boundary not in curLine:
             body+=curLine
-            #ABOVE DOES NOT WORK YET
+            curLine = eml.readline()
+            
 
         print(boundary)
     elif "text" in bodytype:
