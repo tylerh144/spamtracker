@@ -1,0 +1,105 @@
+Delivered-To: tyler.hua@gmail.com
+Received: by 2002:a05:7000:c58b:b0:7b1:5607:6143 with SMTP id jy11csp733797mab;
+        Thu, 18 Dec 2025 15:58:55 -0800 (PST)
+X-Received: by 2002:a05:6102:26c2:b0:5db:db1d:e1cb with SMTP id ada2fe7eead31-5eb1a7c48e5mr336650137.21.1766102095914;
+        Thu, 18 Dec 2025 15:54:55 -0800 (PST)
+X-Received: by 2002:a05:6102:26c2:b0:5db:db1d:e1cb with SMTP id ada2fe7eead31-5eb1a7c48e5mr336644137.21.1766102094920;
+        Thu, 18 Dec 2025 15:54:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1766102094; cv=none;
+        d=google.com; s=arc-20240605;
+        b=E+xqYsX/YxBVQvibGRQd/bEdfCrgChramjYNiWm410ll8113KucAWFjR1iVesLDUqS
+         dSsGi2XnLteudlbgQSAZf6TjEW0ukNsk8yjTphuPxTPpFsHGhrN+Ke7UWJlikMy7VjjY
+         QAP1yaxqCfO0UtP+fF4LzX7tFem0YVJx0Y/UfkPAcV9g0lv8TpVGX2aPxqgKIcLxCPIA
+         QlDJfhRt3syQ0X7Vr7bqIwP2uYl4nV2j0xUE+4uPsOSjvnciwGmbK47Kmhcw3+1Q02tR
+         vTqImNU4qJiSMopg/A5gpphKj7AFIKW7mpT1yVE7gRSpE1YBL05sOaLyWmurWiejq/RK
+         nhBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=izH10Reg4x/XgaBKA3fPwLOQgfmmEURWMP2jgDOB8W4=;
+        fh=7PhbAWG0s+43eZigFXjibnEXLGR1ZaKQazvHTpBSPKA=;
+        b=GdOrhbRm0E9+/eoX6TZZRk6/bapeWKDVIM8bWNEPNiLpaZZEdVqnze5XGjP1YTut+q
+         n00TuqwUsU0bpgZ4Ujh9iD/rkBINZJrqr1uyujJnTb4YTTv/y4zVE+zIz7o0IwqDmCie
+         fXHyWf8zSLkfKRB7wSDbP0cFcHiiU1vc4ozPb8D4tjjhtKATeYRTYaYvM4evlH22yKDO
+         zDlC8bkEHW5HoTMqM3smPEIRnjlVRqKLIDPfdyIM5/p8ZwX4MKiOUbgklAfQgKupx1LW
+         wGXTpmMEI7zXzg27GWIHEUGbg1WwTjvWHUEsnB28P15QGxOs+JuEOvvH6IlFHdzWo9td
+         BKkw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UplQF96v;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <anson.chen934@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id ada2fe7eead31-5eb059a4e2csor521959137.7.2025.12.18.15.54.54
+        for <tyler.hua@gmail.com>
+        (Google Transport Security);
+        Thu, 18 Dec 2025 15:54:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UplQF96v;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1766102094; x=1766706894; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=izH10Reg4x/XgaBKA3fPwLOQgfmmEURWMP2jgDOB8W4=;
+        b=UplQF96vZcdgsEEffHjVoNfzWIK74x00AyQiivwOTWmiyQriMMkUB6hn6mIurNkqmM
+         Xl5xlp1VrBgvSLNd55a4qYyvt+8s84sJTl2Cv8PwlbBaayWz/ny20kmo2S4NVmtszORI
+         S0Xyc4RyB9oPlY3ZAtHLLdOOKBcvNX+bfmLDvnIoaYYLKpTMkpPiBP3xY69y0xHFdjqM
+         Zr9Bz1h2sBByUS+xCwoV9WNVMAiwN+bW01ycNAnsjrB0H/D7t8Uuhiy+UYGZdG1owNY7
+         eK0jcNruuKqHr7CdRNTykHMLHdCvJlv8YzFOpT1/z+COTi0cfMGu7BPeG9Wj58qJ/e4G
+         F15w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766102094; x=1766706894;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=izH10Reg4x/XgaBKA3fPwLOQgfmmEURWMP2jgDOB8W4=;
+        b=P+YZ19yIU7mFX6gAOgaF9muYwYIBDf2sVf7PqFfLHG8hxMHaDZ0fpONMpZRNItbQky
+         Dk9SorXX2pD2Aif0taFh2y8I+ZDL71BjwOSQjs+U1X5Jv0Tskx3vK2x/h2VMrGqWb4Jx
+         S/wZhewio9NXzKgort+Y0w6KRpWD36sNdH7hdHoVcZwfW5KEqad47WsQIeLEQyXVFzML
+         yvwoUJ2XM/NjOrA7POhDYYv3Lg7jfmza22X+N89hyBR4cK5AcQIxKgwZVZQhrgl1V9O1
+         P9vtXa1Qv5+GZS5DfIP36mdzqgdZCeojdoLTOgWBHUVr8Sb3zWfnn96R33mb04LdjStQ
+         3gDQ==
+X-Gm-Message-State: AOJu0YzZM/Km9Z9R8idFduXKPMciPatIjqRJ8JIQS2OGCV5o1cMx5JE6
+	xXyd2KxW1N0fCQ/gw1d3noeWA2/bWCI5/D2zm7hN7yi0G5hWHnW1NrhGV//tLpRcDpdq0joJj9y
+	pbTZD9hjNu+Rs99XW4B6qcy/SYg6gzdVU8/rifYM32g==
+X-Gm-Gg: AY/fxX5eWP8aIS9xX8hnxtEvlXlUKlEWe3Wssh99MpH69NRg5xSZ0NV1x73xFis2Fgv
+	KvXx3n77g+bSnzN9KXKvGyecm9I+tX5N+TTFOHKcPTgc1BTEj2qI9fv+daRvKBLNGV9+eApSUfN
+	D2LWOO0xFDVzRmG5oyiJ8PLX52FtIA820HDuPvoD0O3jCE36d9Jl5Lf7oyR/r2YXRGk2UHaztgy
+	AcuCAcxCbxsukdci1Ejnd4j7WjfTs0urPTq/FOm3M0dh/BvOn0i7jULi6clv7ld5m1pAXLymSyH
+	YPxYI4nkgOSfg9d0fbAzR2n812fQFKYFvMbVx6YJ
+X-Google-Smtp-Source: AGHT+IGyYnllmyq11U1LCpAPdBB3Anbq0HAMJoaHeGayBTK97+qtlowIr8bXzvtoP4oao7rNriR3oiXg5AHi2M1oXww=
+X-Received: by 2002:a05:6102:3f09:b0:5e4:b844:24e8 with SMTP id
+ ada2fe7eead31-5eb1a838090mr345728137.42.1766102094337; Thu, 18 Dec 2025
+ 15:54:54 -0800 (PST)
+MIME-Version: 1.0
+From: Anson Chen <anson.chen934@gmail.com>
+Date: Thu, 18 Dec 2025 18:54:43 -0500
+X-Gm-Features: AQt7F2otUoXB3fq-onDXw1QZhPAr529IH-mqaFUjSjCuBedun1_9IgbCIu3BLFE
+Message-ID: <CANDF-TrGR3kXBkfamx9m-ybAvZUHQgCvO9mSpJPU4DGONW-k4Q@mail.gmail.com>
+Subject: FREE
+To: tyler.hua@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000f85b85064642afe4"
+
+--000000000000f85b85064642afe4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+FREE ROBOX WORKING 2025!!!!!! CLICK NOW!!!!!!!!!!!
+rbxprize.com
+CLAIM =E2=AD=90=EF=B8=8F=E2=9D=A4=EF=B8=8F REAL =F0=9F=98=AE=F0=9F=99=8C NO=
+T SCAM wkjxmds ods['l;;/l.s
+
+--000000000000f85b85064642afe4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">FREE=C2=A0ROBOX=C2=A0WORKING 2025!!!!!! CLICK NOW!!!!!!!!!=
+!!<div><div><a href=3D"http://rbxprize.com/" target=3D"_blank">rbxprize.com=
+</a><br>CLAIM =E2=AD=90=EF=B8=8F=E2=9D=A4=EF=B8=8F REAL =F0=9F=98=AE=F0=9F=
+=99=8C=C2=A0NOT SCAM wkjxmds ods[&#39;l;;/l.s=C2=A0</div></div></div>
+
+--000000000000f85b85064642afe4--

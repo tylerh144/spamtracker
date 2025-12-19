@@ -1,0 +1,112 @@
+Delivered-To: tyler.hua@gmail.com
+Received: by 2002:a05:7000:c58b:b0:7b1:5607:6143 with SMTP id jy11csp741273mab;
+        Thu, 18 Dec 2025 16:11:51 -0800 (PST)
+X-Received: by 2002:a05:6102:80a0:b0:5df:af0f:30a1 with SMTP id ada2fe7eead31-5eb1a804502mr393140137.31.1766103111400;
+        Thu, 18 Dec 2025 16:11:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1766103111; cv=none;
+        d=google.com; s=arc-20240605;
+        b=LO6m8HcklEyNVmmme7uoMZ+j+ZHhsC57YotBP5tONRehfjNDzVjPXAj5T7Tqkop0Aj
+         X1FOnYbFqh9Wl9aWuLHJ7/9JYkbD6FQXm0nhnpNtax7rdgosxgaevuw+CyM+AAba2M3V
+         I3mEZirKPNfMbxmaxwwdK3OAfjOxNqGyamr/mv07EChsTHBI2AxayEkTXT/qh16+piQr
+         K8ZB1caM8IAJqWNliPrBr8ZdH+7XtqTg03BzTG1vx2oO9T9XNSAh2uwe719/3OvM55mg
+         mCqcKXY1XLvVasmH4dcNWkNyS6x9MnDVTCEDrlj2ub99xV0MjIItHTGR8i0u+0Fu9WUv
+         n34g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=Orx/lHskZy7InK74/76Vy71tKDQnlrOdboanPIqGH88=;
+        fh=7PhbAWG0s+43eZigFXjibnEXLGR1ZaKQazvHTpBSPKA=;
+        b=H6Ioo+UyNdGYWJ3yZ31gM/TpoSwCI+/pEMHGAbZtYQLWJQpJpcd7w+RzHJ89QSmDXc
+         cbvc2kOTMmSJyWmMfi12CFI76UwS0TxAlKsGs1JXdRpTfPpTa9rQOor0WkPVzihz9REt
+         LmTThNgsOWjSOWtVfkRr+dh2QOhxIO/EyFyX7Rof2yYwsT9e/zhxprF+4idyiiyec5/r
+         GisD+hlI362SugGssNycUQIHVh39klf2kRFETJ2WGO7KlXAOiRjQMvKB6SUzC7rfsizL
+         I2iBZie0/u16tDBxuZTDkafcuu6Lqi0iV86aShAswkIRyzTyZ9+tLuCQbA7srDdPFP9r
+         W78w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=d8CGr1K8;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <anson.chen934@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id ada2fe7eead31-5eb059a4e21sor469009137.8.2025.12.18.16.11.51
+        for <tyler.hua@gmail.com>
+        (Google Transport Security);
+        Thu, 18 Dec 2025 16:11:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=d8CGr1K8;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1766103111; x=1766707911; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Orx/lHskZy7InK74/76Vy71tKDQnlrOdboanPIqGH88=;
+        b=d8CGr1K8CUR4mWoTsoDmg5YggBQUq0XcjIv6XwPLKRySHWAChsbthNkMGOaPt+FVyK
+         4maanT8MoQjJ5XHx+BxqFoMFc6J3dGu2oUxCpYjYZzSTROrFB3YL37uel1Ox0CMytyL3
+         RjkIcpp0qxKjXXPxIu6ABMNWswl/cVWPS5LEBiya/pG8ga9tKzG2kzlHYmrOtfX+FULA
+         P7lp1XSNldDocv5SgfRpN13Alx58Bxi0KrHe2K3dhXNiJCvkqZqbDjiuC6flnDMLADgd
+         VbenJejMDwOVqwOz2ebMVQFS6j8Bk8oZbHz9nyvY7Pjl1ZpC6zRgZzO6rfeJ/Hi5eOIH
+         OczA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766103111; x=1766707911;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Orx/lHskZy7InK74/76Vy71tKDQnlrOdboanPIqGH88=;
+        b=uDjsTY+7DZ1n2d8Nnw6dS3RmfJuWwHz01L1xu2ydl3kFKUkcJicW41njf99Rf6SaRm
+         ylIZHdj9CPZbVD96uPSOwAojX/4TKiNLLxZJbikTE8szezD6IQA3wvhQ9D6r8VbKdN4Q
+         kAFquNBOH/rq+MT1R8GRhLrRCAvgEH0FioL2W9a64vBXrJRPc7wjHvz4WSO0J9QIDHHE
+         EAEeiLnUi/EUF8hO1FhO1C0fHEiflYh9DdKlDAUgOpwoCCTlB5rptCTmRKidbMNhVb+9
+         E5C+g+sb6ZQo2IxN41hm6BOyYTPKVg27iIiaetqErAdGxFhfiWvVCLsqHUBUUNWviHvt
+         P3Fg==
+X-Gm-Message-State: AOJu0YyKHys4OxNRH4C8qPPXNM+Ch24MjyonGt1iYFPBNFRSZ23H0oGi
+	GOc+odLuS5IrZAgu6luX633vXEX8uI73qOFu0GjQdSRgmQItMKPCoUhZPWP6pDt4O0giNsM9dWL
+	QG4f64A3sknkZFvLs21SYHT+5VqC2p13cAzuDPCo=
+X-Gm-Gg: AY/fxX6cCo6einADQBzMJKj7IK5MI5KcyqilVuZHRXEC3ruN+h7OfNqNJ7kqIGACpsM
+	VC52c0eXuNiLJTBchym81B3KVP8K/re+8YNhjXxILeZPqPkwB4JfYyRBDc6uo8g8oF+2+c+4eGt
+	eS44Of1XLFIe2sMJjlfhUuW8sx2zxZDt6lGeAi5H6EGijfOdNjKAbPdCcBpPc2koDYWGl9AL2Dp
+	ttCb351xli1qDgAg0X/vyqJAy/TIKFGHmYFalRVnLsagnHcqmNiktGHu71+8xoCVa4udZsGIAZE
+	qMLUTiq9IvOBzpNOIkBkKBcrnxgyq0chdVdIo9uI
+X-Google-Smtp-Source: AGHT+IHiORsJWVBOadzx1xePH18YXhlJ9VGzuBO3eBu4YyMDJpg7CjHMGlR8rxlI3zT6R2g6SBpHQi928c925y3rhPQ=
+X-Received: by 2002:a05:6102:568d:b0:5db:b7d9:4db with SMTP id
+ ada2fe7eead31-5eb1a663348mr366129137.14.1766103110728; Thu, 18 Dec 2025
+ 16:11:50 -0800 (PST)
+MIME-Version: 1.0
+From: Anson Chen <anson.chen934@gmail.com>
+Date: Thu, 18 Dec 2025 19:11:40 -0500
+X-Gm-Features: AQt7F2r99yEWX7tk3fbTIVYNfWWsXksNw19KOEtVd9TwQioBs1n0t4V54615UkM
+Message-ID: <CANDF-TrrW7p6ZUDAMDAaC8pcEqoR8a-ua3b9gp+1BGCjbe5RcQ@mail.gmail.com>
+Subject: real jnes kdiman
+To: tyler.hua@gmail.com
+Content-Type: multipart/alternative; boundary="0000000000008d40cc064642ecf8"
+
+--0000000000008d40cc064642ecf8
+Content-Type: text/plain; charset="UTF-8"
+
+helo am jsen kidmna
+
+i need 2000 to go bakc to swedrern
+sned onf paypal]
+
+proff am rel jeans kdirmab
+
+i like juice it is a tru filtrred vitamnin subdstance
+beemkd ov fir swep throo mi hed
+thrus o pancreas en gage
+eror risayng ag nosig nemisis a profet o x tincshun
+
+--0000000000008d40cc064642ecf8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">helo am jsen=C2=A0kidmna=C2=A0<br><br>i need 2000 to go ba=
+kc=C2=A0to swedrern=C2=A0<br><div>sned onf=C2=A0paypal]</div><div><br></div=
+><div>proff am rel jeans=C2=A0kdirmab=C2=A0</div><div><br></div><div>i like=
+ juice it is a tru filtrred vitamnin=C2=A0subdstance=C2=A0<br>beemkd=C2=A0o=
+v=C2=A0fir swep throo=C2=A0mi hed</div><div>thrus o pancreas en gage</div><=
+div>eror risayng=C2=A0ag nosig nemisis=C2=A0a profet=C2=A0o x tincshun=C2=
+=A0</div><div><br></div></div>
+
+--0000000000008d40cc064642ecf8--

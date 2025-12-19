@@ -1,0 +1,103 @@
+Delivered-To: tyler.hua@gmail.com
+Received: by 2002:a05:7000:c58b:b0:7b1:5607:6143 with SMTP id jy11csp732810mab;
+        Thu, 18 Dec 2025 15:55:36 -0800 (PST)
+X-Received: by 2002:a05:6102:5120:b0:5e5:2655:d401 with SMTP id ada2fe7eead31-5eb1a7d4f57mr357804137.24.1766102136349;
+        Thu, 18 Dec 2025 15:55:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1766102136; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jAVnra88ZhK99ADVGFRJ1JFNuwrS14Nck51CdPHUSbFDFqJIva/EHavAcchomRAywQ
+         quRqwSYJ2lUUdykuXzz9jKXFXT/EkNHnL7IJTF/yoPTwhrXlqkUJIl8CoIkA9qSUOsDf
+         vgzptzSbO96RnAB7FJ8Tc/iVUCRoBxXAx8xMkxSrAWCz3z9i/eAli1CnowSW1mJuY938
+         lgIMgFZzXl1GvkikcMwgmQ5ty7xjry39k8P9sA3jSnve7GGQEkSdMjJI4MDl3IysOqkI
+         4cdZQ1xIio3/V47I+hsJGItLen5/v0R0hJQZwdPExcc7qLmNox110yY2QV8zoW2cPZ/8
+         D1/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=EMXlvMQ4oMBRzWDbZg1b6kG7fwDTacTycYm2NgRY19s=;
+        fh=7PhbAWG0s+43eZigFXjibnEXLGR1ZaKQazvHTpBSPKA=;
+        b=VFijqDdgnvDpAfpYjM8LjiLGjXh8Jy4NEkTYG2QMjdLuomZ9SGGbZc5P8Xq4wKP6pk
+         fPn2NuJbdBaXF4ERqtRhdktKBYS7EMVUqEB/tDtuIt1Y0d9LuNA0U2vuUruorqoU1Ora
+         3a6ZftZr23kjZcz8dM4+vm248tO0Pva/M2DbPYpr8mZsSbhfHSGGzcPubqEg4Mw4v/aF
+         Ll494bYkXuxSC5C4684ma/XGE+QIS6kL5L329NTADSXbhWsHlcS8ce7JGjVFnPycJ/ml
+         IHr80ayAslKtlODD8v8FcT13zurPgcaZ0KjdT/QRQhxhpyL/Q2gsP3d7nZaGSQem2+pZ
+         ZsZQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UMTROTLM;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <anson.chen934@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id a1e0cc1a2514c-943311d8435sor1276001241.1.2025.12.18.15.55.36
+        for <tyler.hua@gmail.com>
+        (Google Transport Security);
+        Thu, 18 Dec 2025 15:55:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UMTROTLM;
+       spf=pass (google.com: domain of anson.chen934@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=anson.chen934@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1766102136; x=1766706936; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=EMXlvMQ4oMBRzWDbZg1b6kG7fwDTacTycYm2NgRY19s=;
+        b=UMTROTLMqKEpOr11XXssMxcByRt6JvTa39G5ZQDuX0sYsyKU9izxd5xo5NGMsk3aFR
+         SzBcw/WIFqjtSe23qscpdg5vZel54ekLafMfRdyMFgZxzC/JX3LBpZSKKuwHu+R60pmH
+         4wSPTLX6XOSJexYRR72VRCNSIFske/BUr1qhKDlwDfgswVql2OWdAnT9lDVsjFidga+y
+         pXi5GZJxOn8LULWZ4ktidGHg/N6cGPhgqbywOg2wc2ONmPJVgtcnQRHqf4mCmZLBAjrT
+         Jhy8VAcbI52vATfIBKhH6DTPLCIXispJ2qhddnLr43OS2g4IaaJJdNLc73m/WipxpYYD
+         Cy0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766102136; x=1766706936;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EMXlvMQ4oMBRzWDbZg1b6kG7fwDTacTycYm2NgRY19s=;
+        b=gvL9uuD1+oUYJ6yMbRZyvAYVCXcvdzrIQr5FFAImMlrDLQCiYhvmVO0GCrhdfnn1O3
+         rfY6Ii1qYuobTeqoOZq0O+Ct4Mr3/FYggsiuiX5GkUi5/yQo69vXYiWEsk3OxrYNPolL
+         K+sHb8ySvGhr2jsd7MmZCZOHnZ2Qw/+lhWrC4OtJB/aNgk2xpJ3uOTQFaSTsanav23MF
+         iApJ2/S5QgVO4hZTIM7uDp1FqZbzL/GJkjyiQPZVfTWiOpVsndFU5age+/FjXwNdp6qP
+         v/54YNje4fR51pcSgM00wbblVzy8dGd+eu3c1Pw/pst7ArgIGS/bV6c7GudcY6nGLIfN
+         RRtw==
+X-Gm-Message-State: AOJu0Yz0ogwXU8mZYC4CtEW8ma2Trbu0W+zJX4OmPtDnd8HVvBD1PXVf
+	Cdor9oKBDjF6/dXJMmL3ndqFEvvLb0WNw6SIHCxOg8yGAraBpqP2U5GoJIPelPlrSClYECFeuMc
+	bih4nY4KWZk7RblmI21lu948cTgHwAVUdU9h5wCWPZQ==
+X-Gm-Gg: AY/fxX7EYQco0N/PcxmtJU8lbn9JRGl/aEaNC+r2UsTVE3mkxwazmbFzwYSclEH6HiW
+	dBdLklhmL6WE7uCQh9hP2iW+R1Xfto3902Dk+kHUJVTalqIWsairpoyqpg1pcv97RSdP3T9BKhy
+	pbyvXia/iCKyaWhGsCMK9f8HSms5bFiB//1kzV2tcb9tPuQ4a3ghxheUnAcPrc6z1wlzIPnPvYM
+	IrHbTefR5Ef/mjzxgmlcPJPxSzqTntK4R3+2ZsfpOR9ZHGXYw+q3I1snkE6MWh7qLmEf7vVHP4g
+	SSNVXFNh6mMsuw9erRjunyKQwgBmMg==
+X-Google-Smtp-Source: AGHT+IF0jZDo01GDyO0379Mm0cMwRnpCwBloYsfNs5deU/c4PqOG8xavvgiHXmxRh77Y60716iBSYvf2hnHpCV9Dbwk=
+X-Received: by 2002:a05:6102:4b8a:b0:5e1:866c:4f8a with SMTP id
+ ada2fe7eead31-5eb1a7d4eb3mr424518137.20.1766102135846; Thu, 18 Dec 2025
+ 15:55:35 -0800 (PST)
+MIME-Version: 1.0
+From: Anson Chen <anson.chen934@gmail.com>
+Date: Thu, 18 Dec 2025 18:55:25 -0500
+X-Gm-Features: AQt7F2p_MK1jk2vB5Z5EOua-irqJbWiBzF2W-BX3JnAuClIFmvYskEbzYHA8zLQ
+Message-ID: <CANDF-TpMnxCYZbb0gZaO-cTR=cYkzgpigjQwDg+Ju6XYhdsJzg@mail.gmail.com>
+Subject: OFFICIAL FREE ROBUX FREE ROBUX FREE ROBUX FREE ROBUX REAL REAL REAL
+ 2025 WORKING!!!!!
+To: tyler.hua@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000071b9f1064642b283"
+
+--00000000000071b9f1064642b283
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+CLICK FOR FREE ROBUX OR COPYR PASTE IN BROWZER =F0=9F=A4=91=F0=9F=A4=91
+https://rbxlane.com
+REAL METHROD BY OFFICIAL ROBOXLOR
+
+--00000000000071b9f1064642b283
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>CLICK FOR FREE ROBUX OR COPYR PASTE IN BROWZER=C2=A0=
+=F0=9F=A4=91=F0=9F=A4=91</div><div><a href=3D"https://rbxlane.com/" target=
+=3D"_blank">https://rbxlane.com</a></div><div>REAL METHROD BY OFFICIAL ROBO=
+XLOR=C2=A0</div></div>
+
+--00000000000071b9f1064642b283--
