@@ -1,6 +1,5 @@
 import os, re
 
-
 class EmailData:
     def __init__(self, sender_name, sender_email, date, subject, body):
         self.sender_name = sender_name
@@ -9,6 +8,7 @@ class EmailData:
         self.subject = subject
         self.body = body
         self.rep = 0
+        self.spamwords = 0
 
     def __str__(self):
         return f"Sender: {self.sender_name}\nEmail: {self.sender_email}\nDate: {self.date}\nSubject: {self.subject}\n{self.body}\n\n"
@@ -28,6 +28,7 @@ emailData = []
 for file in emails:
     eml = open(path + "\\Emails1\\" + file)
 
+    print("opened")
     aggregate = eml.read()
     eml.seek(0)
 
@@ -91,9 +92,12 @@ for file in emails:
             curLine = eml.readline()
             
 
-        print(boundary)
     elif "text" in bodytype:
-        body = "htmlfiller"
+        while curLine != "\n":
+            curLine = eml.readline()
+
+        for line in eml:
+            body+=line
     else:
         body = "not found"
 
@@ -101,9 +105,27 @@ for file in emails:
     #put data in object
     emailData.append(EmailData(name, sender, date, subject, body))
 
+    print("closed")
     eml.close()
+
+
 
 #print emldata
 for eml in emailData:
     print(eml)
+
+
+    
+
+file = open(path + "\\spamkeywords.txt")
+contents = file.read()
+file.close()
+spamwords = contents.split("\n")
+
+for eml in emailData:
+    for word in spamwords:
+        matchlist = re.findall(word, eml.body, flags=re.IGNORECASE) + re.findall(word, eml.subject, flags=re.IGNORECASE)
+        eml.spamwords+=len(matchlist)
+    
+    print(eml.spamwords)
 
