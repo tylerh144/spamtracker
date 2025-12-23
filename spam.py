@@ -8,7 +8,6 @@ class EmailData:
         self.subject = subject
         self.body = body
         self.rep = 0
-        self.spamwords = 0
 
     def __str__(self):
         return f"Sender: {self.sender_name}\nEmail: {self.sender_email}\nDate: {self.date}\nSubject: {self.subject}\n{self.body}\n\n"
@@ -19,14 +18,14 @@ path = os.path.dirname(os.path.abspath(__file__))
 print(path)
 
 
-emails = os.listdir(path + "\\Emails1\\")
+emails = os.listdir(path + "\\Emails\\")
 print(emails)
 
 emailData = []
 
 #collect data
 for file in emails:
-    eml = open(path + "\\Emails1\\" + file)
+    eml = open(path + "\\Emails\\" + file)
 
     print("opened")
     aggregate = eml.read()
@@ -123,9 +122,16 @@ file.close()
 spamwords = contents.split("\n")
 
 for eml in emailData:
+    sc = 0
     for word in spamwords:
         matchlist = re.findall(word, eml.body, flags=re.IGNORECASE) + re.findall(word, eml.subject, flags=re.IGNORECASE)
-        eml.spamwords+=len(matchlist)
+        sc+=len(matchlist)
     
-    print(eml.spamwords)
+    #ratio of spam keywords to words
+    wc = len(re.findall("\s", eml.body))
+    print(str(sc) + "/" + str(wc) + "=" + str(sc/wc))
 
+
+
+#ADD TIME SUSPICION
+#CHANGE REP by SPAM RATIO, BLOCKED EMAILS, DATE, IP?
