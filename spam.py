@@ -8,6 +8,7 @@ class EmailData:
         self.subject = subject
         self.body = body
         self.rep = 0
+        self.spam = False
 
     def __str__(self):
         return f"Sender: {self.sender_name}\nEmail: {self.sender_email}\nDate: {self.date}\nSubject: {self.subject}\n{self.body}\n\n"
@@ -19,7 +20,13 @@ print(path)
 
 
 emails = os.listdir(path + "\\Emails2\\")
-print(emails)
+
+print()
+print("Emails in " + path + ":")
+print()
+for eml in emails:
+    print(eml)
+print()
 
 emailData = []
 
@@ -27,7 +34,7 @@ emailData = []
 for file in emails:
     eml = open(path + "\\Emails2\\" + file)
 
-    print("opened")
+    #print("opened")
     aggregate = eml.read()
     eml.seek(0)
 
@@ -37,8 +44,7 @@ for file in emails:
         curLine = eml.readline()
     
     date = curLine.split(": ")[1]
-
-
+  
 
     # date and from are ordered differently sometimes, return to start
     eml.seek(0)
@@ -104,24 +110,35 @@ for file in emails:
     #put data in object
     emailData.append(EmailData(name, sender, date, subject, body))
 
-    print("closed")
+    #print("closed")
     eml.close()
 
 
 
 #print emldata
-for eml in emailData:
-    print(eml)
+#for eml in emailData:
+#    print(eml)
 
 
     
-
+#reads spamkeywords, trustedemails, and blockedemails
 file = open(path + "\\spamkeywords.txt")
 contents = file.read()
 file.close()
 spamwords = contents.split("\n")
 
+file = open(path + "\\trusted.txt")
+contents = file.read()
+file.close()
+trusted = contents.split("\n")
+
+file = open(path + "\\blocked.txt")
+contents = file.read()
+file.close()
+blocked = contents.split("\n")
+
 for eml in emailData:
+    #find spam ratio
     sc = 0
     for word in spamwords:
         matchlist = re.findall(word, eml.body, flags=re.IGNORECASE) + re.findall(word, eml.subject, flags=re.IGNORECASE)
@@ -129,9 +146,29 @@ for eml in emailData:
     
     #ratio of spam keywords to words
     wc = len(re.findall("\s", eml.body))
-    print(str(sc) + "/" + str(wc) + "=" + str(sc/wc))
+    ratio=sc/wc
+    #add rep based on spam word ratio
+    eml.rep+=ratio*100 #filler ratio
+
+    #print(str(sc) + "/" + str(wc) + "=" + str(ratio))
+
+    #check sender email in trusted/blocked
+    if eml.sender_email in trusted:
+        eml.rep-=50 #filler val
+
+    if eml.sender_email in blocked:
+        eml.rep+=50
 
 
+    #check hour sent
+    hour = int(re.search("\d+(?=:)",  date).group())
+    if hour < 6 or hour > 20:
+        eml.rep+=20
 
-#ADD TIME SUSPICION
-#CHANGE REP by SPAM RATIO, BLOCKED EMAILS, DATE, IP?
+    #filler condition
+    if eml.rep > 50:
+        eml.spam = True
+    
+    print(eml.rep)
+
+#ADD USER INTERACTION/MENU
