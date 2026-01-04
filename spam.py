@@ -18,14 +18,14 @@ path = os.path.dirname(os.path.abspath(__file__))
 print(path)
 
 
-emails = os.listdir(path + "\\Emails\\")
+emails = os.listdir(path + "\\Emails2\\")
 print(emails)
 
 emailData = []
 
 #collect data
 for file in emails:
-    eml = open(path + "\\Emails\\" + file)
+    eml = open(path + "\\Emails2\\" + file)
 
     print("opened")
     aggregate = eml.read()
