@@ -165,7 +165,7 @@ for eml in emailData:
     if hour < 6 or hour > 20:
         eml.rep+=20
 
-    #filler condition
+    #final condition
     if eml.rep > 50:
         eml.spam = True
     
